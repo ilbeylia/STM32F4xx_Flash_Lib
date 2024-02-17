@@ -104,13 +104,17 @@ int main(void)
   MX_SPI1_Init();
   MX_USB_HOST_Init();
   /* USER CODE BEGIN 2 */
-//  Flash_WR(0x080E0000, 0x00);
+
   read_data = Flash_RD(0x080E0000);
+
   if (read_data<=10){
 	  read_data +=1;
 //	  Flash_Erase(0x0080E0000, 4);
 	  test=1;
 	  Flash_WR(0x080E0000, read_data);
+  }
+  else {
+	  Flash_WR(0x080E0000, 0x00);
   }
   /* USER CODE END 2 */
 
